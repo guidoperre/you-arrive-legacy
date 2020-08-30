@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:height="2300px"
+        android:width="1080px"
+        android:drawable="@color/DarkAccent"
+        android:gravity="center" />
+    <item
+        android:width="170dp"
+        android:height="170dp"
+        android:drawable="@drawable/logo_pin_solo"
+        android:gravity="center" />
+</layer-list>

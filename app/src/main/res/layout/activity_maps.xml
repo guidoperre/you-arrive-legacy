@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context=".ui.main.MapsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.19" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_92.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.925" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_85.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.855" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_83.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.835" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_76.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.765" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.19" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_96"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.94" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_83.9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.81" />
+
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/circle_box"
+            android:elevation="15dp"
+            android:src="@mipmap/ic_search_button_foreground"
+            app:layout_constraintBottom_toTopOf="@+id/hor_guideline_19"
+            app:layout_constraintEnd_toStartOf="@+id/ver_guideline_50"
+            app:layout_constraintStart_toStartOf="@+id/ver_guideline_50"
+            app:layout_constraintTop_toTopOf="@+id/hor_guideline_19"
+            android:contentDescription="@string/item_icono_descriptor" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            tools:context=".ui.activities.main.MapsActivity"
+            tools:ignore="FragmentTagUsage" />
+
+        <ImageButton
+            android:id="@+id/myLocationButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_box"
+            android:elevation="5dp"
+            android:src="@mipmap/ic_my_location_button_foreground"
+            app:layout_constraintBottom_toTopOf="@+id/hor_guideline_92.5"
+            app:layout_constraintEnd_toStartOf="@+id/ver_guideline_96"
+            app:layout_constraintStart_toStartOf="@+id/ver_guideline_83.9"
+            app:layout_constraintTop_toTopOf="@+id/hor_guideline_85.5"
+            android:contentDescription="@string/item_icono_descriptor" />
+
+        <ImageButton
+            android:id="@+id/optionButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_box"
+            android:elevation="5dp"
+            android:src="@mipmap/ic_settings_button_foreground"
+            app:layout_constraintBottom_toTopOf="@+id/hor_guideline_92.5"
+            app:layout_constraintEnd_toStartOf="@+id/ver_guideline_16"
+            app:layout_constraintStart_toStartOf="@+id/ver_guideline_4"
+            app:layout_constraintTop_toTopOf="@+id/hor_guideline_85.5"
+            android:contentDescription="@string/item_icono_descriptor" />
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/themeButton"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:background="@drawable/circle_box"-->
+<!--            android:elevation="5dp"-->
+<!--            android:src="@mipmap/ic_settings_button_foreground"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/hor_guideline_83.5"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/ver_guideline_16"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/ver_guideline_4"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/hor_guideline_76.5"-->
+<!--            android:contentDescription="@string/item_icono_descriptor" />-->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.50"
+            app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_bar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/semi_round_box_top"
+            android:elevation="10dp"
+            android:fitsSystemWindows="true"
+            app:layout_constraintBottom_toBottomOf="@id/hor_guideline_19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/hor_guideline_32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.32"
+                app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/hor_guideline_68"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.68"
+                app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/ver_guideline_90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.90"
+                app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/ver_guideline_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.10"
+                app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+            <TextView
+                android:id="@+id/textbuttom_search"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/round_box"
+                android:fontFamily="@font/quicksand_regular"
+                android:gravity="center"
+                android:hint="@string/mapsActivity_hint_search"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/hor_guideline_68"
+                app:layout_constraintLeft_toLeftOf="@id/ver_guideline_10"
+                app:layout_constraintRight_toRightOf="@id/ver_guideline_90"
+                app:layout_constraintTop_toTopOf="@id/hor_guideline_32" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

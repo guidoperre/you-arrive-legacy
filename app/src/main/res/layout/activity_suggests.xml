@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    tools:context=".ui.suggests.SuggestsActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor_guideline_19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.19" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ver_guideline_90_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <ImageButton
+        android:id="@+id/search_settings"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/circle_box"
+        android:contentDescription="@string/search_settings"
+        android:elevation="10dp"
+        android:visibility="gone"
+        android:src="@mipmap/ic_settings_button_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/hor_guideline_19"
+        app:layout_constraintEnd_toStartOf="@+id/ver_guideline_90_out"
+        app:layout_constraintTop_toTopOf="@+id/hor_guideline_19" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/placesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hor_guideline_19" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/auxiliar_constraint"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/semi_round_box_top"
+        android:elevation="5dp"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toBottomOf="@id/hor_guideline_19"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.34"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_68"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.66" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.10" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/hor_guideline_68"
+            app:layout_constraintLeft_toLeftOf="@id/ver_guideline_10"
+            app:layout_constraintRight_toRightOf="@id/ver_guideline_90"
+            app:layout_constraintTop_toTopOf="@id/hor_guideline_32">
+
+            <EditText
+                android:id="@+id/search_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints=""
+                android:background="@drawable/round_box"
+                android:fontFamily="@font/quicksand_regular"
+                android:hint="@string/search_here"
+                android:inputType="textAutoComplete"
+                android:paddingStart="50dp"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                tools:ignore="RtlSymmetry" />
+
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="12dp"
+                android:background="@color/colorPrimary"
+                android:contentDescription="@string/search_google"
+                android:src="@mipmap/ic_google_foreground" />
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

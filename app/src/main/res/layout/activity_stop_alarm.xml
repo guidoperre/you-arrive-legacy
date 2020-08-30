@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/medium_grey_solid">
+
+    <TextView
+        android:id="@+id/you_arrive_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_medium"
+        android:text="@string/you_arrive_text"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/stop_alarm_help_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/you_arrive_text">
+
+        <ImageView
+            android:id="@+id/clock_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="40dp"
+            android:contentDescription="@string/item_icono_descriptor"
+            android:src="@drawable/reloj"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/day_zone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_range_selector"
+            android:fontFamily="@font/quicksand_medium"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="2dp"
+            android:text="@string/default_day_zone"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/hour"
+            app:layout_constraintEnd_toEndOf="@+id/clock_background"
+            app:layout_constraintStart_toStartOf="@+id/clock_background" />
+
+        <TextView
+            android:id="@+id/hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="@string/default_hour"
+            android:textColor="@color/colorAccent"
+            android:textSize="46sp"
+            app:layout_constraintBottom_toBottomOf="@+id/clock_background"
+            app:layout_constraintEnd_toEndOf="@+id/clock_background"
+            app:layout_constraintStart_toStartOf="@+id/clock_background"
+            app:layout_constraintTop_toTopOf="@+id/clock_background" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/stop_alarm_help_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/quicksand_regular"
+        android:gravity="center"
+        android:text="@string/stop_alarm_help_text"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/stop_alarm_swipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.ebanx.swipebtn.SwipeButton
+        android:id="@+id/stop_alarm_swipe"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:button_background="@drawable/round_swipe_button"
+        app:button_image_disabled="@mipmap/ic_alarm_white_foreground"
+        app:button_image_enabled="@mipmap/ic_alarm_white_foreground"
+        app:button_left_padding="-20dp"
+        app:button_right_padding="-20dp"
+        app:button_top_padding="-20dp"
+        app:button_bottom_padding="-20dp"
+        app:inner_text_background="@drawable/round_swipe_background"
+        app:inner_text_bottom_padding="20dp"
+        app:inner_text_left_padding="20dp"
+        app:inner_text_top_padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline65.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline65.5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.68"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

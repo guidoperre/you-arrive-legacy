@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.19" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_92.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_85.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hor_guideline_75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.19" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_96"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.94" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_83.9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.81" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <ImageButton
+            android:id="@+id/firstConfirm_back_secondary"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/circle_box"
+            android:elevation="15dp"
+            android:src="@mipmap/ic_search_button_foreground"
+            app:layout_constraintBottom_toTopOf="@+id/hor_guideline_19"
+            app:layout_constraintEnd_toStartOf="@+id/ver_guideline_50"
+            app:layout_constraintStart_toStartOf="@+id/ver_guideline_50"
+            app:layout_constraintTop_toTopOf="@+id/hor_guideline_19"
+            android:contentDescription="@string/item_icono_descriptor" />
+
+        <fragment
+            android:id="@+id/map_to_first_confirm"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.activities.firstconfirmation.FirstConfirmationActivity"
+            tools:ignore="FragmentTagUsage" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginBottom="50dp"
+            android:src="@mipmap/ic_manual_select_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/item_icono_descriptor" />
+
+        <ImageButton
+            android:id="@+id/myLocationButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_box"
+            android:elevation="5dp"
+            android:src="@mipmap/ic_my_location_button_foreground"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/ver_guideline_96"
+            app:layout_constraintStart_toStartOf="@+id/ver_guideline_83.9"
+            app:layout_constraintTop_toTopOf="@+id/hor_guideline_75"
+            android:contentDescription="@string/item_icono_descriptor" />
+
+        <TextView
+            android:id="@+id/firstConfirmButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_first_confirm"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:focusable="true"
+            android:fontFamily="@font/quicksand_regular"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:text="@string/select_travel_button"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/hor_guideline_92.5"
+            app:layout_constraintEnd_toStartOf="@+id/ver_guideline_85"
+            app:layout_constraintStart_toStartOf="@+id/ver_guideline_15"
+            app:layout_constraintTop_toTopOf="@+id/hor_guideline_85.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/ver_guideline_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.50"
+            app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_bar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/semi_round_box_top"
+            android:elevation="10dp"
+            android:fitsSystemWindows="true"
+            app:layout_constraintBottom_toBottomOf="@id/hor_guideline_19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/hor_guideline_32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.34"
+                app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/hor_guideline_68"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.66"
+                app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/ver_guideline_90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.90"
+                app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/ver_guideline_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.10"
+                app:layout_constraintStart_toEndOf="@+id/search_bar" />
+
+            <TextView
+                android:id="@+id/firstConfirm_back"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_box"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/quicksand_regular"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/hor_guideline_68"
+                app:layout_constraintLeft_toLeftOf="@id/ver_guideline_10"
+                app:layout_constraintRight_toRightOf="@id/ver_guideline_90"
+                app:layout_constraintTop_toTopOf="@id/hor_guideline_32" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/address_loading_dots"
+                android:layout_width="35dp"
+                android:layout_height="60dp"
+                android:elevation="3dp"
+                android:src="@drawable/loading_dots"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/hor_guideline_68"
+                app:layout_constraintEnd_toStartOf="@+id/ver_guideline_90"
+                app:layout_constraintStart_toStartOf="@+id/firstConfirm_back"
+                app:layout_constraintTop_toTopOf="@+id/hor_guideline_32" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
