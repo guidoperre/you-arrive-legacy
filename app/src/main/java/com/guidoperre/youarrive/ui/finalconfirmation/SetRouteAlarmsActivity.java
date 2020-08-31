@@ -79,6 +79,7 @@ public class SetRouteAlarmsActivity extends FragmentActivity implements OnMapRea
     private ConstraintLayout bottomLayout;
     private ConstraintLayout mainLayout;
     private RelativeLayout mapContainer;
+    private View separator;
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,6 +112,7 @@ public class SetRouteAlarmsActivity extends FragmentActivity implements OnMapRea
         routeDetails = findViewById(R.id.open_route_detail);
         ellipsize = findViewById(R.id.ellipsize);
         routeLayout = findViewById(R.id.route_layout);
+        separator = findViewById(R.id.view_bottom_final_confirmation);
         bottomLayout = findViewById(R.id.confirm_main_layout);
         mainLayout = findViewById(R.id.main_layout);
         mapContainer = findViewById(R.id.map_container);
@@ -294,6 +296,7 @@ public class SetRouteAlarmsActivity extends FragmentActivity implements OnMapRea
         routeDetailFragment.setArguments(bundle);
 
         fragmentManager.beginTransaction().setCustomAnimations(R.anim.top_in,0).replace(R.id.fragment_container, routeDetailFragment , "ROUTE_DETAIL_FRAGMENT").commit();
+        separator.animate().alpha(0f).setDuration(500).withEndAction(() -> separator.setVisibility(View.GONE));
         mainLayout.animate().alpha(0f).setDuration(500).withEndAction(() -> mainLayout.setVisibility(View.GONE));
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -314,6 +317,7 @@ public class SetRouteAlarmsActivity extends FragmentActivity implements OnMapRea
         fragmentManager.beginTransaction().setCustomAnimations(R.anim.fade_in,0).replace(R.id.fragment_container, addAlarmFragment, "ADD_ALARM_FRAGMENT").commit();
         mainLayout.animate().alpha(0f).setDuration(300).withEndAction(() -> mainLayout.setVisibility(View.GONE));
         bottomLayout.animate().alpha(0f).setDuration(400).withEndAction(() -> bottomLayout.setVisibility(View.GONE));
+        separator.animate().alpha(0f).setDuration(400).withEndAction(() -> separator.setVisibility(View.GONE));
         mapContainer.animate().translationY((float) (new Utils().getLayoutHeight()*0.250)).setDuration(250);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -323,6 +327,8 @@ public class SetRouteAlarmsActivity extends FragmentActivity implements OnMapRea
         fragmentManager.beginTransaction().setCustomAnimations(0,R.anim.top_out).remove(routeDetailsFragment).commit();
         mainLayout.setVisibility(View.VISIBLE);
         mainLayout.animate().alpha(1f).setDuration(350).setListener(null);
+        separator.setVisibility(View.VISIBLE);
+        separator.animate().alpha(1f).setDuration(350).setListener(null);
         bottomLayout.setVisibility(View.VISIBLE);
         bottomLayout.animate().alpha(1f).setDuration(100).setListener(null);
     }
@@ -334,6 +340,8 @@ public class SetRouteAlarmsActivity extends FragmentActivity implements OnMapRea
         setAlarmCount();
 
         fragmentManager.beginTransaction().setCustomAnimations(0,R.anim.fade_out).remove(addAlarmFragment).commit();
+        separator.setVisibility(View.VISIBLE);
+        separator.animate().alpha(1f).setDuration(400).setListener(null);
         mainLayout.setVisibility(View.VISIBLE);
         mainLayout.animate().alpha(1f).setDuration(400).setListener(null);
         bottomLayout.setVisibility(View.VISIBLE);

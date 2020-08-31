@@ -120,7 +120,7 @@ public class DialogController {
 
         configurationRepository = new ConfigurationRepository(application);
         Configuration configuration = configurationRepository.get().get(0);
-        actualMetric= configuration.getMetric();
+        actualMetric= new ConfigurationController().getMetric(context, configuration.getMetric());
 
         setMetricSpinner(dialog);
     }
@@ -148,9 +148,10 @@ public class DialogController {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             String selectedMetric = parent.getItemAtPosition(position).toString();
+            ConfigurationController configurationController = new ConfigurationController();
 
             if (!selectedMetric.equals(actualMetric))
-                metric = selectedMetric;
+                metric = configurationController.getRawMetric(parent.getContext(),selectedMetric);
             else
                 metric = "";
         }

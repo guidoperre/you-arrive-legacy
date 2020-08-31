@@ -16,6 +16,7 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.guidoperre.youarrive.R;
 import com.guidoperre.youarrive.controllers.MapController;
@@ -32,7 +33,7 @@ import com.guidoperre.youarrive.utilities.Utils;
 import java.util.List;
 import java.util.Objects;
 
-public class RoutePreviewActivity extends FragmentActivity implements OnMapReadyCallback {
+public class RoutePreviewActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
 
@@ -155,6 +156,15 @@ public class RoutePreviewActivity extends FragmentActivity implements OnMapReady
         if (alarms != null && alarms.size() > 0)
             for (Alarm alarm:alarms)
                 mMap.addMarker(new MarkerOptions().position(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude())).flat(true).anchor(0.50f,0.50f).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_add_alarm_foreground)).zIndex(6f).title(alarm.getTitle()));
+
+            mMap.setOnMarkerClickListener(this);
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return true;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
 

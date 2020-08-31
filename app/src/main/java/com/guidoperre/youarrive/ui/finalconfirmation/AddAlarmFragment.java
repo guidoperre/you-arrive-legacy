@@ -1,5 +1,6 @@
 package com.guidoperre.youarrive.ui.finalconfirmation;
 
+import android.content.Context;
 import android.media.RingtoneManager;
 import android.os.Bundle;
 
@@ -74,6 +75,7 @@ public class AddAlarmFragment extends Fragment implements GoogleMap.OnMapClickLi
     private SeekBar seekBar;
     private TextView seekBarProgress;
 
+    private TextView safeZoneTitle;
     private TextView firstOption;
     private TextView secondOption;
     private TextView thirdOption;
@@ -91,6 +93,7 @@ public class AddAlarmFragment extends Fragment implements GoogleMap.OnMapClickLi
 
         seekBar = mView.findViewById(R.id.seekBar);
         seekBarProgress = mView.findViewById(R.id.volume_percent);
+        safeZoneTitle = mView.findViewById(R.id.safezone_title);
         firstOption = mView.findViewById(R.id.safezone_first_option);
         secondOption = mView.findViewById(R.id.safezone_second_option);
         thirdOption = mView.findViewById(R.id.safezone_third_option);
@@ -222,28 +225,56 @@ public class AddAlarmFragment extends Fragment implements GoogleMap.OnMapClickLi
     ////////////////////////////////////////////////////////////////////////////////////////////
     private void setSafeZone(){
         if (getActivity() != null)
+            setSafeZoneMetric(getActivity().getApplicationContext());
             switch (alarm.getSafezone()){
                 case 1:
                     firstOption.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.safezone_first_background));
                     firstOption.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorPrimary));
-                    addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(firstOption.getText().toString()));
+                    addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(getActivity().getApplicationContext().getResources().getString(R.string.safezone_first_option_metres)));
                     break;
                 case 2:
                     secondOption.setBackgroundColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorAccent));
                     secondOption.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorPrimary));
-                    addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(secondOption.getText().toString()));
+                    addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(getActivity().getApplicationContext().getResources().getString(R.string.safezone_second_option_metres)));
                     break;
                 case 3:
                     thirdOption.setBackgroundColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorAccent));
                     thirdOption.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorPrimary));
-                    addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(thirdOption.getText().toString()));
+                    addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(getActivity().getApplicationContext().getResources().getString(R.string.safezone_third_option_metres)));
                     break;
                 case 4:
                     fourthOption.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.safezone_fourth_background));
                     fourthOption.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorPrimary));
-                    addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(fourthOption.getText().toString()));
+                    addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(getActivity().getApplicationContext().getResources().getString(R.string.safezone_fourth_option_metres)));
                     break;
             }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    private void setSafeZoneMetric(Context context){
+        ConfigurationRepository configurationRepository = new ConfigurationRepository(context);
+        Configuration configuration = configurationRepository.get().get(0);
+
+        String safeZoneTitleText = context.getResources().getString(R.string.safezone_title) + " (" + context.getResources().getString(R.string.metres) + ")";
+        String firstOptionText = context.getResources().getString(R.string.safezone_first_option_metres);
+        String secondOptionText = context.getResources().getString(R.string.safezone_second_option_metres);
+        String thirdOptionText = context.getResources().getString(R.string.safezone_third_option_metres);
+        String fourthOptionText = context.getResources().getString(R.string.safezone_fourth_option_metres);
+
+        if (configuration.getMetric().equals("imperial")){
+            safeZoneTitleText = context.getResources().getString(R.string.safezone_title) + " (" + context.getResources().getString(R.string.miles) + ")";
+            firstOptionText = context.getResources().getString(R.string.safezone_first_option_imperial);
+            secondOptionText = context.getResources().getString(R.string.safezone_second_option_imperial);
+            thirdOptionText = context.getResources().getString(R.string.safezone_third_option_imperial);
+            fourthOptionText = context.getResources().getString(R.string.safezone_fourth_option_imperial);
+        }
+
+        safeZoneTitle.setText(safeZoneTitleText);
+        firstOption.setText(firstOptionText);
+        secondOption.setText(secondOptionText);
+        thirdOption.setText(thirdOptionText);
+        fourthOption.setText(fourthOptionText);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -255,7 +286,7 @@ public class AddAlarmFragment extends Fragment implements GoogleMap.OnMapClickLi
                 alarm.setSafezone(1);
                 firstOption.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.safezone_first_background));
                 firstOption.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorPrimary));
-                addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(firstOption.getText().toString()));
+                addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(getActivity().getApplicationContext().getResources().getString(R.string.safezone_first_option_metres)));
             }
         });
         secondOption.setOnClickListener(v -> {
@@ -264,7 +295,7 @@ public class AddAlarmFragment extends Fragment implements GoogleMap.OnMapClickLi
                 alarm.setSafezone(2);
                 secondOption.setBackgroundColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorAccent));
                 secondOption.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorPrimary));
-                addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(secondOption.getText().toString()));
+                addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(getActivity().getApplicationContext().getResources().getString(R.string.safezone_second_option_metres)));
             }
         });
         thirdOption.setOnClickListener(v -> {
@@ -273,7 +304,7 @@ public class AddAlarmFragment extends Fragment implements GoogleMap.OnMapClickLi
                 alarm.setSafezone(3);
                 thirdOption.setBackgroundColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorAccent));
                 thirdOption.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorPrimary));
-                addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(thirdOption.getText().toString()));
+                addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(getActivity().getApplicationContext().getResources().getString(R.string.safezone_third_option_metres)));
             }
         });
         fourthOption.setOnClickListener(v -> {
@@ -282,7 +313,7 @@ public class AddAlarmFragment extends Fragment implements GoogleMap.OnMapClickLi
                 alarm.setSafezone(4);
                 fourthOption.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.safezone_fourth_background));
                 fourthOption.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(),R.color.colorPrimary));
-                addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(fourthOption.getText().toString()));
+                addRangeCircle(new LatLng(alarm.getLocation().getLatitude(),alarm.getLocation().getLongitude()), Integer.parseInt(getActivity().getApplicationContext().getResources().getString(R.string.safezone_fourth_option_metres)));
             }
         });
     }

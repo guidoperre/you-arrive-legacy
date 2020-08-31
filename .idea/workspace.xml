@@ -10,13 +10,32 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b36d9ff-80af-4c52-8213-371634a59eac" name="Default Changelist" comment="" />
+    <list default="true" id="6b36d9ff-80af-4c52-8213-371634a59eac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/adapters/RouteDetailViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/adapters/RouteDetailViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/controllers/ConfigurationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/controllers/ConfigurationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/controllers/DialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/controllers/DialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/models/GeoCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/models/GeoCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/models/RouteStop.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/models/RouteStop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/services/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/services/MyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/ui/finalconfirmation/AddAlarmFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/ui/finalconfirmation/AddAlarmFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/ui/finalconfirmation/RoutePreviewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/ui/finalconfirmation/RoutePreviewActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/ui/finalconfirmation/SetAlarmActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/ui/finalconfirmation/SetAlarmActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/ui/finalconfirmation/SetRouteAlarmsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/ui/finalconfirmation/SetRouteAlarmsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_alarm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_alarm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_route_alarms.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_route_alarms.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_alarm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_alarm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="ce11171b7868aa3604" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -47,7 +66,7 @@
     <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/YouArrive" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1f1TyAXZJGcr3DwRVjiTG9wALZN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -69,7 +88,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../you-arrive" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
@@ -286,7 +305,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/guidoperre/youarrive/controllers/ConfigurationController.java</url>
-          <line>39</line>
+          <line>58</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>

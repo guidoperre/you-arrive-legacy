@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">YouArrive</string>
     <string name="title_activity_maps">Mapa</string>
     <string name="title_activity_marker">Marcador</string>
@@ -48,10 +48,14 @@
     <string name="volume_title">Volumen de alarma</string>
     <string name="safezone_title">Seleccionar área segura</string>
     <string name="volume_percent_default">50%</string>
-    <string name="safezone_fourth_option_metric">500</string>
-    <string name="safezone_third_option_metric">250</string>
-    <string name="safezone_second_option_metric">100</string>
-    <string name="safezone_first_option_metric">0</string>
+    <string name="safezone_fourth_option_metres">500</string>
+    <string name="safezone_third_option_metres">250</string>
+    <string name="safezone_second_option_metres">100</string>
+    <string name="safezone_first_option_metres">0</string>
+    <string name="safezone_fourth_option_imperial" tools:ignore="TypographyFractions">1/3</string>
+    <string name="safezone_third_option_imperial">1/6</string>
+    <string name="safezone_second_option_imperial">1/15</string>
+    <string name="safezone_first_option_imperial">0</string>
     <string name="your_location">Tu ubicación</string>
     <string name="default_alarm_text">Alarma por defecto</string>
     <string name="select_file_text">Seleccionar archivo</string>

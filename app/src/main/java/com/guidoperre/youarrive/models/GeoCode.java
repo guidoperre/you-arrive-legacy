@@ -1,6 +1,7 @@
 package com.guidoperre.youarrive.models;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -16,6 +17,7 @@ public class GeoCode {
     @Expose
     private double longitude;
 
+    @Ignore
     public GeoCode(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;

@@ -1,13 +1,32 @@
 package com.guidoperre.youarrive.controllers;
 
+import android.content.Context;
+
+import com.guidoperre.youarrive.R;
+
 public class ConfigurationController {
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-    public String getMetric(String metric){
+    public String getMetric(Context context, String metric){
+        String finalMetric = context.getResources().getString(R.string.metres);
+
+        if (metric.equals("metric"))
+            finalMetric = context.getResources().getString(R.string.metres);
+        else if (metric.equals("imperial"))
+            finalMetric = context.getResources().getString(R.string.miles);
+
+        return finalMetric;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    public String getRawMetric(Context context, String metric){
         String finalMetric = "metric";
 
-        if (metric.equals("metric") || metric.equals("imperial"))
-            finalMetric = metric;
+        if (metric.equals(context.getResources().getString(R.string.metres)))
+            finalMetric = "metric";
+        else if (metric.equals(context.getResources().getString(R.string.miles)))
+            finalMetric = "imperial";
 
         return finalMetric;
     }

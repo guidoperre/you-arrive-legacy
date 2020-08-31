@@ -60,6 +60,7 @@ public class MyService extends LifecycleService {
     private RoutesController routesController = new RoutesController();
 
     private AlarmLogRepository alarmLogRepository;
+    private AlarmRepository alarmRepository;
     private RoutesRepository routesRepository = new RoutesRepository();
     private ServiceViewModel model;
 
@@ -121,6 +122,7 @@ public class MyService extends LifecycleService {
         configuration = configurationRepository.get().get(0);
         configurationController = new ConfigurationController();
         alarmLogRepository = new AlarmLogRepository(getApplication());
+        alarmRepository = new AlarmRepository(getApplication());
         getAlarms();
         locationRequestParams();
         initializeViewModel();
@@ -320,9 +322,11 @@ public class MyService extends LifecycleService {
     private void checkLocation(double myLatitude, double myLongitude){
         double difference = mapController.convertDifferenceToMeters(new LatLng(actualAlarm.getLocation().getLatitude(),actualAlarm.getLocation().getLongitude()),new LatLng(myLatitude,myLongitude));
 
-        if (Math.abs(difference) < actualAlarm.getSafezone())
+        if (Math.abs(difference) < actualAlarm.getSafezone()){
             youArrive();
-        else
+            if (checkForNewAlarm())
+                makeRouteCall(myLatitude,myLongitude,actualAlarm.getLocation().getLatitude(),actualAlarm.getLocation().getLongitude());
+        } else
             makeRouteCall(myLatitude,myLongitude,actualAlarm.getLocation().getLatitude(),actualAlarm.getLocation().getLongitude());
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -372,8 +376,10 @@ public class MyService extends LifecycleService {
         boolean isNewAlarm = false;
         actualPosition++;
         if (allAlarms.size() > actualPosition){
-            actualAlarm = allAlarms.get(actualPosition);
+            setCountDown(alarmController.getRemainingTime(actualRoute, actualAlarm.getLocation().getLatitude(), actualAlarm.getLocation().getLongitude(), getApplication()));
             setSafeZone();
+            alarmRepository.deleteAlarm(actualAlarm.getTitle());
+            actualAlarm = allAlarms.get(actualPosition);
             isNewAlarm = true;
         }
 

@@ -7,7 +7,7 @@ public class RouteStop {
 
     @SerializedName("position")
     @Expose
-    private GeoCode position;
+    private RouteManeuverPosition position;
     @SerializedName("travelTime")
     @Expose
     private Integer travelTime;
@@ -15,11 +15,11 @@ public class RouteStop {
     @Expose
     private String stopName;
 
-    public GeoCode getPosition() {
+    public RouteManeuverPosition getPosition() {
         return position;
     }
 
-    public void setPosition(GeoCode position) {
+    public void setPosition(RouteManeuverPosition position) {
         this.position = position;
     }
 

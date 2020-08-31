@@ -32,10 +32,12 @@ import com.guidoperre.youarrive.controllers.MapController;
 import com.guidoperre.youarrive.controllers.NavigationController;
 import com.guidoperre.youarrive.models.Alarm;
 import com.guidoperre.youarrive.models.AlarmTone;
+import com.guidoperre.youarrive.models.Configuration;
 import com.guidoperre.youarrive.models.GeoCode;
 import com.guidoperre.youarrive.models.LastAlarmConfiguration;
 import com.guidoperre.youarrive.models.RecoveryData;
 import com.guidoperre.youarrive.repositories.AlarmRepository;
+import com.guidoperre.youarrive.repositories.ConfigurationRepository;
 import com.guidoperre.youarrive.repositories.RecoveryDataRepository;
 import com.guidoperre.youarrive.services.MyService;
 import com.guidoperre.youarrive.ui.awaitscreen.AwaitAlarmActivity;
@@ -60,6 +62,7 @@ public class SetAlarmActivity extends FragmentActivity implements OnMapReadyCall
 
     private SeekBar seekBar;
     private TextView seekBarProgress;
+    private TextView safeZoneTitle;
     private TextView firstOption;
     private TextView secondOption;
     private TextView thirdOption;
@@ -96,6 +99,7 @@ public class SetAlarmActivity extends FragmentActivity implements OnMapReadyCall
         myLocationButton = findViewById(R.id.myLocationButton);
         seekBar = findViewById(R.id.seekBar);
         seekBarProgress = findViewById(R.id.volume_percent);
+        safeZoneTitle = findViewById(R.id.safezone_title);
         firstOption = findViewById(R.id.safezone_first_option);
         secondOption = findViewById(R.id.safezone_second_option);
         thirdOption = findViewById(R.id.safezone_third_option);
@@ -199,30 +203,56 @@ public class SetAlarmActivity extends FragmentActivity implements OnMapReadyCall
 
     ////////////////////////////////////////////////////////////////////////////////////////////
     private void setSafeZone(){
+        setSafeZoneMetric();
         switch (alarm.getSafezone()) {
             case 1:
                 firstOption.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.safezone_first_background));
                 firstOption.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
-                addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(firstOption.getText().toString()));
+                addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(getApplicationContext().getResources().getString(R.string.safezone_first_option_metres)));
                 break;
             case 2:
                 secondOption.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 secondOption.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
-                addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(secondOption.getText().toString()));
+                addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(getApplicationContext().getResources().getString(R.string.safezone_second_option_metres)));
                 break;
             case 3:
                 thirdOption.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
                 thirdOption.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
-                addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(thirdOption.getText().toString()));
+                addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(getApplicationContext().getResources().getString(R.string.safezone_third_option_metres)));
                 break;
             case 4:
                 fourthOption.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.safezone_fourth_background));
                 fourthOption.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
-                addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(fourthOption.getText().toString()));
+                addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(getApplicationContext().getResources().getString(R.string.safezone_fourth_option_metres)));
                 break;
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
+
+    private void setSafeZoneMetric(){
+        ConfigurationRepository configurationRepository = new ConfigurationRepository(getApplicationContext());
+        Configuration configuration = configurationRepository.get().get(0);
+
+        String safeZoneTitleText = getApplicationContext().getResources().getString(R.string.safezone_title) + " (" + getApplicationContext().getResources().getString(R.string.metres) + ")";
+        String firstOptionText = getApplicationContext().getResources().getString(R.string.safezone_first_option_metres);
+        String secondOptionText = getApplicationContext().getResources().getString(R.string.safezone_second_option_metres);
+        String thirdOptionText = getApplicationContext().getResources().getString(R.string.safezone_third_option_metres);
+        String fourthOptionText = getApplicationContext().getResources().getString(R.string.safezone_fourth_option_metres);
+
+        if (configuration.getMetric().equals("imperial")){
+            safeZoneTitleText = getApplicationContext().getResources().getString(R.string.safezone_title) + " (" + getApplicationContext().getResources().getString(R.string.miles) + ")";
+            firstOptionText = getApplicationContext().getResources().getString(R.string.safezone_first_option_imperial);
+            secondOptionText = getApplicationContext().getResources().getString(R.string.safezone_second_option_imperial);
+            thirdOptionText = getApplicationContext().getResources().getString(R.string.safezone_third_option_imperial);
+            fourthOptionText = getApplicationContext().getResources().getString(R.string.safezone_fourth_option_imperial);
+        }
+
+        safeZoneTitle.setText(safeZoneTitleText);
+        firstOption.setText(firstOptionText);
+        secondOption.setText(secondOptionText);
+        thirdOption.setText(thirdOptionText);
+        fourthOption.setText(fourthOptionText);
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
     private void safeZoneListener(){
@@ -231,31 +261,28 @@ public class SetAlarmActivity extends FragmentActivity implements OnMapReadyCall
             alarm.setSafezone(1);
             firstOption.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.safezone_first_background));
             firstOption.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
-            addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(firstOption.getText().toString()));
+            addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(getApplicationContext().getResources().getString(R.string.safezone_first_option_metres)));
         });
         secondOption.setOnClickListener(v -> {
             resetBackgroundSafeZone();
             alarm.setSafezone(2);
             secondOption.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
             secondOption.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
-            addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(secondOption.getText().toString()));
-
+            addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(getApplicationContext().getResources().getString(R.string.safezone_second_option_metres)));
         });
         thirdOption.setOnClickListener(v -> {
             resetBackgroundSafeZone();
             alarm.setSafezone(3);
             thirdOption.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
             thirdOption.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
-            addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(thirdOption.getText().toString()));
-
+            addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(getApplicationContext().getResources().getString(R.string.safezone_third_option_metres)));
         });
         fourthOption.setOnClickListener(v -> {
             resetBackgroundSafeZone();
             alarm.setSafezone(4);
             fourthOption.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.safezone_fourth_background));
             fourthOption.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
-            addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(fourthOption.getText().toString()));
-
+            addRangeCircle(new LatLng(latitude,longitude), Integer.parseInt(getApplicationContext().getResources().getString(R.string.safezone_fourth_option_metres)));
         });
     }
     ////////////////////////////////////////////////////////////////////////////////////////////

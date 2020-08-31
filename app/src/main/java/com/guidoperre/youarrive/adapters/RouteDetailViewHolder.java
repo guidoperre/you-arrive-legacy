@@ -14,6 +14,9 @@ import com.guidoperre.youarrive.models.Configuration;
 import com.guidoperre.youarrive.models.RoutePath;
 import com.guidoperre.youarrive.repositories.ConfigurationRepository;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 class RouteDetailViewHolder extends RecyclerView.ViewHolder{
 
     private ImageView icon;
@@ -110,13 +113,13 @@ class RouteDetailViewHolder extends RecyclerView.ViewHolder{
     }
 
     private void setWalkText(RoutePath routePath){
-        String text = itemView.getResources().getString(R.string.walk) + " "  + routePath.getTime()/60 + " " + itemView.getResources().getString(R.string.minutes) + " (" + routePath.getLength() + "m)";
+        String text = itemView.getResources().getString(R.string.walk) + " "  + routePath.getTime()/60 + " " + itemView.getResources().getString(R.string.minutes) + " (" + getRouteLength(routePath.getLength()) + getTypeOfMetric()+ ")";
         walkTextTitle.setVisibility(View.VISIBLE);
         walkTextTitle.setText(text);
     }
 
     private void setCarText(RoutePath routePath){
-        String text = itemView.getResources().getString(R.string.drive) + " "  + routePath.getTime()/60 + " " + itemView.getResources().getString(R.string.minutes) + " (" + routePath.getLength() + "m)";
+        String text = itemView.getResources().getString(R.string.drive) + " "  + routePath.getTime()/60 + " " + itemView.getResources().getString(R.string.minutes) + " (" + getRouteLength(routePath.getLength()) + getTypeOfMetric() + ")";
         walkTextTitle.setVisibility(View.VISIBLE);
         walkTextTitle.setText(text);
     }
@@ -129,6 +132,31 @@ class RouteDetailViewHolder extends RecyclerView.ViewHolder{
             placeTextTitle.setText(routePath.getEndRoadName());
     }
 
+    private String getRouteLength(int routeLength){
+        String metric = configuration.getMetric();
+        float length = routeLength;
+
+        if (metric.equals("imperial"))
+            length = length / 1609;
+
+        DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+        decimalFormatSymbols.setDecimalSeparator('.');
+
+        DecimalFormat format = new DecimalFormat("#.##", decimalFormatSymbols);
+
+        return format.format(length);
+    }
+
+    private String getTypeOfMetric(){
+        String abbreviation = "m";
+        String metric = configuration.getMetric();
+
+        if (metric.equals("imperial"))
+            abbreviation = "mi";
+
+        return abbreviation;
+    }
+
     private void setDots(int position,int routeSize){
         if (position == 0)
             botDot.setVisibility(View.VISIBLE);
@@ -138,6 +166,5 @@ class RouteDetailViewHolder extends RecyclerView.ViewHolder{
             botDot.setVisibility(View.VISIBLE);
             topDot.setVisibility(View.VISIBLE);
         }
-
     }
 }
